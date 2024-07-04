@@ -1,5 +1,7 @@
 # Linuxfabrik's IcingaWeb2 Theme
 
+![Screenshot](./screenshots/login.png)
+
 ## Installation
 
 ```bash
