@@ -1,0 +1,31 @@
+// adapted from /usr/share/icingaweb2/public/css/icinga/layout.less
+
+#header-logo,
+#mobile-menu-logo {
+    background-image: url('../img/linuxfabrik/linuxfabrik-logo.svg');
+    filter: invert(1) hue-rotate(180deg) drop-shadow(0 0 1rem white) ;
+}
+
+#icinga-logo {
+    background-image: url('../img/linuxfabrik/linuxfabrik-logo.svg');
+    filter: invert(1) hue-rotate(180deg) drop-shadow(0 0 1rem white) ;
+
+    &.invert {
+        background-image: url('../img/linuxfabrik/linuxfabrik-logo.svg');
+    }
+}
+
+// slightly reduce the padding to make the logo larger
+#header-logo-container {
+    padding: 0.5em;
+}
+
+// support light mode
+@light-mode: {
+    #header-logo,
+    #mobile-menu-logo,
+    #about .icinga-logo {
+        // but do not change our logo
+        filter: initial;
+    }
+};
