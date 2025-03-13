@@ -1,18 +1,16 @@
 // adapted from /usr/share/icingaweb2/public/css/icinga/layout.less
 
-#header-logo,
-#mobile-menu-logo {
+// Logo on Login page
+#icinga-logo {
     background-image: url('../img/linuxfabrik/linuxfabrik-logo.svg');
     filter: invert(1) hue-rotate(180deg) drop-shadow(0 0 1rem white) ;
 }
 
-#icinga-logo {
+// Logo top left when logged in
+#header-logo,
+#mobile-menu-logo {
     background-image: url('../img/linuxfabrik/linuxfabrik-logo.svg');
     filter: invert(1) hue-rotate(180deg) drop-shadow(0 0 1rem white) ;
-
-    &.invert {
-        background-image: url('../img/linuxfabrik/linuxfabrik-logo.svg');
-    }
 }
 
 // slightly reduce the padding to make the logo larger
@@ -20,12 +18,20 @@
     padding: 0.5em;
 }
 
-// support light mode
+// Icons of the individual checks
+.icon-image {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+// default is inverted (= dark mode). explicitly disable invert for light mode
+// note: not required for the logo in the login page, as that is always dark mode
 @light-mode: {
     #header-logo,
-    #mobile-menu-logo,
-    #about .icinga-logo {
+    #mobile-menu-logo {
         // but do not change our logo
+        filter: drop-shadow(0 0 1rem white) ;
+    };
+    .icon-image {
         filter: initial;
-    }
+    };
 };
