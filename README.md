@@ -6,7 +6,7 @@
 
 ```bash
 MODULE_NAME="linuxfabrik"
-MODULE_VERSION="v1.0.0"
+MODULE_VERSION="v1.1.0"
 MODULE_AUTHOR="Linuxfabrik"
 MODULES_PATH="/usr/share/icingaweb2/modules"
 MODULE_PATH="${MODULES_PATH}/${MODULE_NAME}"
