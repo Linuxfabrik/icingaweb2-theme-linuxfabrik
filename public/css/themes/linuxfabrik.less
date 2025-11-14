@@ -6,9 +6,10 @@
     filter: invert(1) hue-rotate(180deg) drop-shadow(0 0 1rem white) ;
 }
 
-// Logo top left when logged in
+// Logo top left when logged in and even when the sidebar is collapsed
 #header-logo,
-#mobile-menu-logo {
+#mobile-menu-logo,
+#layout:not(.minimal-layout).sidebar-collapsed #header-logo {
     background-image: url('../img/linuxfabrik/linuxfabrik-logo.svg');
     filter: invert(1) hue-rotate(180deg) drop-shadow(0 0 1rem white) ;
 }
@@ -27,7 +28,8 @@
 // note: not required for the logo in the login page, as that is always dark mode
 @light-mode: {
     #header-logo,
-    #mobile-menu-logo {
+    #mobile-menu-logo,
+    #layout:not(.minimal-layout).sidebar-collapsed #header-logo {
         // but do not change our logo
         filter: drop-shadow(0 0 1rem white) ;
     };
