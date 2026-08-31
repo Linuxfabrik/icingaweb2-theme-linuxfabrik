@@ -6,3 +6,16 @@ repos:
       - id: 'check-merge-conflict'
       - id: 'end-of-file-fixer'
       - id: 'trailing-whitespace'
+
+  # The theme is a single LESS file that Icinga Web compiles together with its
+  # own and every module's LESS. A parse error there does not just break the
+  # theme, it takes the whole stylesheet down, so make sure it compiles.
+  - repo: 'local'
+    hooks:
+      - id: 'lessc'
+        name: 'lessc'
+        entry: 'lessc --lint'
+        language: 'node'
+        additional_dependencies:
+          - 'less@4.9.0'
+        files: '\.less$'
