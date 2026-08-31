@@ -24,6 +24,43 @@
     filter: invert(1) hue-rotate(180deg);
 }
 
+// Shrink the check icons to the size of the state ball right next to them.
+// Upstream sizes them 3em (2em in minimal lists), while the state balls are
+// ball-size-xl = 2em and ball-size-l = 1.5em (see ipl-web, asset/css/balls.less).
+// Of that, `@ball-pad` on each side is padding (solid balls) or border (outline
+// balls), so subtract it twice to end up at the visible circle instead of the
+// outer box, and shift the icon down by it to keep both centered.
+// Icinga Web wraps module CSS in `.icinga-module.module-<name>`, so the prefix is
+// required to reach the specificity of the upstream rules. Both the current
+// (`item-layout`) and the pre-1.2 (`item-list`) class names are covered.
+// = 1/6em, spelled out so it does not depend on the compiler's division mode
+@lf-ball-pad: 0.16667em;
+
+.icinga-module.module-icingadb {
+    .item-layout .icon-image,
+    .item-list .icon-image {
+        height: 2em - @lf-ball-pad * 2;
+        // the ball starts .5em below the row, plus half of what the icon lost
+        // above, which is @ball-pad in both list layouts
+        margin-top: 0.5em + @lf-ball-pad;
+        width: 2em - @lf-ball-pad * 2;
+    }
+
+    // the detail header pulls the icon up to the row edge, its state change
+    // starts .25em below it instead of .5em
+    .item-layout.header-item-layout .icon-image {
+        margin-top: 0.25em + @lf-ball-pad;
+    }
+
+    .item-layout.minimal-item-layout .icon-image,
+    .item-list.minimal .icon-image {
+        height: 1.5em - @lf-ball-pad * 2;
+        // upstream keeps the line box as tall as the icon box, so do the same
+        line-height: 1.5 - 0.33334;
+        width: 1.5em - @lf-ball-pad * 2;
+    }
+}
+
 // default is inverted (= dark mode). explicitly disable invert for light mode
 // note: not required for the logo in the login page, as that is always dark mode
 @light-mode: {
